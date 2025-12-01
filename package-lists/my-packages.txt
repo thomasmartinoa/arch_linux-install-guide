@@ -1,0 +1,129 @@
+# Martin's Personal Package List
+# My Arch Linux + Hyprland setup
+
+# ============================================
+# AUDIO & BLUETOOTH
+# ============================================
+pipewire
+pipewire-pulse
+pipewire-alsa
+pipewire-jack
+wireplumber
+bluez
+bluez-utils
+pavucontrol
+
+# ============================================
+# GPU DRIVERS (Choose based on hardware)
+# ============================================
+# Intel
+mesa
+intel-media-driver
+vulkan-intel
+
+# AMD
+# mesa
+# libva-mesa-driver
+# vulkan-radeon
+
+# NVIDIA
+nvidia
+nvidia-lts
+nvidia-utils
+nvidia-settings
+
+# ============================================
+# HYPRLAND SETUP
+# ============================================
+hyprland
+kitty
+wofi
+waybar
+mako
+swaylock
+swayidle
+hyprpaper
+grim
+slurp
+wl-clipboard
+cliphist
+xdg-desktop-portal-hyprland
+qt5-wayland
+qt6-wayland
+polkit-kde-agent
+
+# ============================================
+# TERMINAL TOOLS
+# ============================================
+zsh
+starship
+tmux
+neovim
+btop
+neofetch
+fastfetch
+bat
+exa
+ripgrep
+fd
+fzf
+lazygit
+ranger
+
+# ============================================
+# DEVELOPMENT
+# ============================================
+base-devel
+git
+github-cli
+python
+python-pip
+nodejs
+npm
+rustup
+go
+docker
+docker-compose
+
+# ============================================
+# APPLICATIONS
+# ============================================
+firefox
+thunar
+imv
+mpv
+obs-studio
+discord
+spotify-launcher
+
+# ============================================
+# UTILITIES
+# ============================================
+unzip
+zip
+p7zip
+unrar
+wget
+curl
+rsync
+tree
+ncdu
+
+# ============================================
+# FONTS
+# ============================================
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-firacode-nerd
+ttf-jetbrains-mono-nerd
+ttf-liberation
+
+# ============================================
+# AUR PACKAGES (install with yay)
+# ============================================
+# yay -S google-chrome
+# yay -S visual-studio-code-bin
+# yay -S spotify
+# yay -S timeshift
+# yay -S sddm-theme-sugar-candy

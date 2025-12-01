@@ -1,0 +1,25 @@
+# .gitignore
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Personal notes
+notes.md
+TODO.md
+personal/
+
+# Image sources (keep only optimized versions)
+images/raw/

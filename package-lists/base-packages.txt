@@ -1,0 +1,47 @@
+# Base Installation Packages
+# Install with: pacman -S --needed $(cat base-packages.txt)
+
+# Core System
+base
+base-devel
+linux
+linux-headers
+linux-lts
+linux-lts-headers
+linux-firmware
+
+# Boot
+grub
+efibootmgr
+os-prober
+
+# Filesystems
+dosfstools
+mtools
+ntfs-3g
+btrfs-progs
+
+# LVM & Encryption
+lvm2
+cryptsetup
+
+# Networking
+networkmanager
+network-manager-applet
+wpa_supplicant
+openssh
+dhcpcd
+
+# Text Editors
+vim
+neovim
+nano
+
+# Utilities
+sudo
+git
+wget
+curl
+htop
+man-db
+man-pages

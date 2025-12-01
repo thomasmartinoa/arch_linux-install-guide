@@ -1,0 +1,67 @@
+# Desktop Environment Packages
+# Choose based on your preferred DE
+
+# ============================================
+# HYPRLAND (Wayland Compositor)
+# ============================================
+hyprland
+kitty
+wofi
+waybar
+mako
+swaylock
+hyprpaper
+grim
+slurp
+wl-clipboard
+xdg-desktop-portal-hyprland
+qt5-wayland
+qt6-wayland
+polkit-kde-agent
+
+# ============================================
+# KDE PLASMA
+# ============================================
+# Minimal: plasma-desktop sddm
+# Full: plasma kde-applications
+plasma
+kde-applications
+sddm
+
+# ============================================
+# GNOME
+# ============================================
+# Minimal: gnome-shell gnome-control-center gnome-terminal nautilus gdm
+# Full: gnome gnome-extra
+gnome
+gnome-extra
+gdm
+
+# ============================================
+# XFCE
+# ============================================
+xfce4
+xfce4-goodies
+lightdm
+lightdm-gtk-greeter
+
+# ============================================
+# COMMON (All DEs)
+# ============================================
+# Fonts
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+ttf-liberation
+ttf-dejavu
+ttf-firacode-nerd
+
+# Icons & Themes
+papirus-icon-theme
+arc-gtk-theme
+
+# File Management
+thunar
+gvfs
+gvfs-mtp
+file-roller
