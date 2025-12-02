@@ -544,14 +544,14 @@ cryptsetup luksDump /dev/nvme0n1p3
 
 Your encrypted system is ready for base installation!
 
-→ [Base Installation](../03-base-installation/base-install.md)
+→ [Encrypted Base Installation](../03-base-installation/base-install-encrypted.md)
 
-Remember to configure mkinitcpio and GRUB during installation!
+> 💡 The encrypted guide includes mkinitcpio hooks and GRUB cryptdevice configuration!
 
 ---
 
 <div align="center">
 
-[← LVM Setup](lvm-setup.md) | [Back to Main Guide](../../README.md) | [Next: Base Installation →](../03-base-installation/base-install.md)
+[← LVM Setup](lvm-setup.md) | [Back to Main Guide](../../README.md) | [Next: Encrypted Base Installation →](../03-base-installation/base-install-encrypted.md)
 
 </div>

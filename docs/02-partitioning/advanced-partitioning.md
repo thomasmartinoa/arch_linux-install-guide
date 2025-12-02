@@ -334,12 +334,12 @@ sda4   swap   SWAP    8G [SWAP]
 
 Your disk is now partitioned and ready!
 
-→ [Base Installation](../03-base-installation/base-install.md)
+→ [Standard Base Installation](../03-base-installation/base-install-standard.md)
 
 ---
 
 <div align="center">
 
-[← Basic Partitioning](basic-partitioning.md) | [Back to Main Guide](../../README.md) | [Next: Base Installation →](../03-base-installation/base-install.md)
+[← Basic Partitioning](basic-partitioning.md) | [Back to Main Guide](../../README.md) | [Next: Base Installation →](../03-base-installation/base-install-standard.md)
 
 </div>

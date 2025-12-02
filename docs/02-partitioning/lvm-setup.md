@@ -466,7 +466,7 @@ lvcreate -L 10G -s -n root_snapshot /dev/volgroup0/lv_root
 
 Your LVM setup is complete!
 
-→ [Base Installation](../03-base-installation/base-install.md)
+→ [LVM Base Installation](../03-base-installation/base-install-lvm.md)
 
 Or for encrypted LVM:
 → [LVM with Encryption](lvm-encryption.md)
@@ -475,6 +475,6 @@ Or for encrypted LVM:
 
 <div align="center">
 
-[← Advanced Partitioning](advanced-partitioning.md) | [Back to Main Guide](../../README.md) | [Next: Base Installation →](../03-base-installation/base-install.md)
+[← Advanced Partitioning](advanced-partitioning.md) | [Back to Main Guide](../../README.md) | [Next: LVM Base Installation →](../03-base-installation/base-install-lvm.md)
 
 </div>

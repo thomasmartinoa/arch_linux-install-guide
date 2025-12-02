@@ -454,12 +454,12 @@ partprobe /dev/sda
 
 Your disk is now partitioned and ready!
 
-→ [Base Installation](../03-base-installation/base-install.md)
+→ [Standard Base Installation](../03-base-installation/base-install-standard.md)
 
 ---
 
 <div align="center">
 
-[← Partition Overview](partition-overview.md) | [Back to Main Guide](../../README.md) | [Next: Base Installation →](../03-base-installation/base-install.md)
+[← Partition Overview](partition-overview.md) | [Back to Main Guide](../../README.md) | [Next: Base Installation →](../03-base-installation/base-install-standard.md)
 
 </div>
