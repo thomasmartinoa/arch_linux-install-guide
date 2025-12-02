@@ -1,7 +1,6 @@
 # 🐧 Arch Linux Installation Guide
 
 [![Arch Linux](https://img.shields.io/badge/Arch%20Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white)](https://archlinux.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 > A comprehensive, beginner-friendly guide to installing Arch Linux with detailed explanations of every command.
 
@@ -22,15 +21,6 @@
 
 This guide documents my personal Arch Linux installation process, designed to help both beginners and experienced users. Unlike other guides that just list commands, **this guide explains what each command does** so you can learn while installing.
 
-### What Makes This Guide Different?
-
-- ✅ **Detailed explanations** for every command
-- ✅ **Multiple partitioning methods** (Basic, Advanced, LVM, Encrypted)
-- ✅ **Screenshots** for visual learners
-- ✅ **Desktop environment options** with comparisons
-- ✅ **Post-installation optimizations**
-- ✅ **Troubleshooting tips**
-
 ---
 
 ## 📚 Prerequisites
@@ -42,67 +32,6 @@ Before starting, ensure you have:
 - [ ] Internet connection (Ethernet recommended, WiFi supported)
 - [ ] Backup of important data
 - [ ] Basic command line knowledge (helpful but not required)
-
----
-
-## 📂 Guide Structure
-
-```
-arch_linux-install-guide/
-├── README.md                          # You are here
-├── docs/
-│   ├── 01-pre-installation/
-│   │   ├── bios-settings.md           # BIOS/UEFI configuration
-│   │   ├── create-bootable-usb.md     # Creating installation media
-│   │   └── live-environment.md        # Live boot setup
-│   │
-│   ├── 02-partitioning/
-│   │   ├── partition-overview.md      # Understanding partitions
-│   │   ├── basic-partitioning.md      # Simple dual-partition setup
-│   │   ├── advanced-partitioning.md   # Separate /home, /boot, swap
-│   │   ├── lvm-setup.md               # LVM without encryption
-│   │   └── lvm-encryption.md          # Full disk encryption with LVM
-│   │
-│   ├── 03-base-installation/
-│   │   ├── base-install.md            # Core system installation
-│   │   ├── system-configuration.md    # Hostname, locale, users
-│   │   └── bootloader.md              # GRUB installation
-│   │
-│   ├── 04-post-installation/
-│   │   ├── first-boot.md              # Initial setup after reboot
-│   │   ├── drivers.md                 # GPU and hardware drivers
-│   │   ├── audio-bluetooth.md         # Audio and Bluetooth setup
-│   │   └── network-setup.md           # Network configuration
-│   │
-│   ├── 05-desktop-environments/
-│   │   ├── de-overview.md             # Comparison of DEs
-│   │   ├── hyprland.md                # Hyprland (Wayland compositor)
-│   │   ├── kde-plasma.md              # KDE Plasma
-│   │   ├── gnome.md                   # GNOME
-│   │   ├── xfce.md                    # XFCE
-│   │   └── display-managers.md        # GDM, SDDM, LightDM
-│   │
-│   ├── 06-essential-software/
-│   │   ├── essential-packages.md      # Must-have packages
-│   │   ├── aur-helpers.md             # yay, paru installation
-│   │   └── recommended-apps.md        # Useful applications
-│   │
-│   └── 07-optimization/
-│       ├── performance-tweaks.md      # System optimization
-│       ├── security.md                # Security hardening
-│       └── maintenance.md             # System maintenance
-│
-├── package-lists/
-│   ├── base-packages.txt              # Minimal installation packages
-│   ├── desktop-packages.txt           # Desktop environment packages
-│   └── my-packages.txt                # My personal package list
-│
-├── scripts/
-│   └── post-install.sh                # Automated post-install script
-│
-└── images/
-    └── (screenshots and diagrams)
-```
 
 ---
 
@@ -141,6 +70,14 @@ Choose your installation path based on your needs:
 
 ---
 
+## 📖 Additional Resources
+
+- [Arch Wiki](https://wiki.archlinux.org/) - The ultimate Arch Linux resource
+- [Arch Linux Forums](https://bbs.archlinux.org/) - Community support
+- [r/archlinux](https://www.reddit.com/r/archlinux/) - Reddit community
+
+---
+
 ## 🤝 Contributing
 
 Found an error or want to improve this guide? Contributions are welcome!
@@ -150,20 +87,6 @@ Found an error or want to improve this guide? Contributions are welcome!
 3. Commit your changes (`git commit -am 'Fix typo in partitioning guide'`)
 4. Push to the branch (`git push origin fix/typo`)
 5. Open a Pull Request
-
----
-
-## 📖 Additional Resources
-
-- [Arch Wiki](https://wiki.archlinux.org/) - The ultimate Arch Linux resource
-- [Arch Linux Forums](https://bbs.archlinux.org/) - Community support
-- [r/archlinux](https://www.reddit.com/r/archlinux/) - Reddit community
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
