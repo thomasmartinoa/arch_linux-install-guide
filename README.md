@@ -36,22 +36,32 @@ Before starting, ensure you have:
 
 ## 🚀 Quick Navigation
 
-### 🔰 For Beginners (Recommended Path)
+### 🔰 For Beginners (Standard Path)
 1. [BIOS Settings](docs/01-pre-installation/bios-settings.md)
 2. [Create Bootable USB](docs/01-pre-installation/create-bootable-usb.md)
 3. [Live Environment Setup](docs/01-pre-installation/live-environment.md)
 4. [Basic Partitioning](docs/02-partitioning/basic-partitioning.md)
-5. [Base Installation](docs/03-base-installation/base-install.md)
-6. [First Boot](docs/04-post-installation/first-boot.md)
-7. [Choose a Desktop Environment](docs/05-desktop-environments/de-overview.md)
+5. [Standard Base Installation](docs/03-base-installation/base-install-standard.md)
+6. [Standard Bootloader](docs/03-base-installation/bootloader-standard.md)
+7. [First Boot](docs/04-post-installation/first-boot.md)
+8. [Choose a Desktop Environment](docs/05-desktop-environments/de-overview.md)
 
-### 🔒 For Security-Focused Users
-1. [Pre-installation steps](#-for-beginners-recommended-path) (Steps 1-3)
+### 📦 For LVM Users (Flexible Partitioning)
+1. [Pre-installation steps](#-for-beginners-standard-path) (Steps 1-3)
+2. [LVM Setup](docs/02-partitioning/lvm-setup.md)
+3. [LVM Base Installation](docs/03-base-installation/base-install-lvm.md)
+4. [LVM Bootloader](docs/03-base-installation/bootloader-lvm.md)
+5. [First Boot](docs/04-post-installation/first-boot.md)
+
+### 🔒 For Security-Focused Users (Encrypted)
+1. [Pre-installation steps](#-for-beginners-standard-path) (Steps 1-3)
 2. [LVM with Encryption](docs/02-partitioning/lvm-encryption.md)
-3. [Base Installation](docs/03-base-installation/base-install.md)
-4. [Security Hardening](docs/07-optimization/security.md)
+3. [Encrypted Base Installation](docs/03-base-installation/base-install-encrypted.md)
+4. [Encrypted Bootloader](docs/03-base-installation/bootloader-encrypted.md)
+5. [First Boot](docs/04-post-installation/first-boot.md)
+6. [Security Hardening](docs/07-optimization/security.md)
 
-### ⚡ For others(justforme)
+### ⚡ For Experienced Users
 Jump directly to [Package Lists](package-lists/) and [Scripts](scripts/)
 
 ---
