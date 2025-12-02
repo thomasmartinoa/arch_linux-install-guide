@@ -10,10 +10,9 @@
 
 1. [Introduction](#-introduction)
 2. [Prerequisites](#-prerequisites)
-3. [Guide Structure](#-guide-structure)
-4. [Quick Navigation](#-quick-navigation)
-5. [Installation Paths](#-installation-paths)
-6. [Contributing](#-contributing)
+3. [Quick Navigation](#-quick-navigation)
+4. [Installation Paths](#-installation-paths)
+5. [Contributing](#-contributing)
 
 ---
 
@@ -31,7 +30,7 @@ Before starting, ensure you have:
 - [ ] A USB drive (8GB or larger)
 - [ ] Internet connection (Ethernet recommended, WiFi supported)
 - [ ] Backup of important data
-- [ ] Basic command line knowledge (helpful but not required)
+- [ ] Basic command line knowledge
 
 ---
 
@@ -52,7 +51,7 @@ Before starting, ensure you have:
 3. [Base Installation](docs/03-base-installation/base-install.md)
 4. [Security Hardening](docs/07-optimization/security.md)
 
-### ⚡ For Experienced Users
+### ⚡ For others(justforme)
 Jump directly to [Package Lists](package-lists/) and [Scripts](scripts/)
 
 ---
