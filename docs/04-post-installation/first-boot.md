@@ -2,7 +2,7 @@
 
 > Initial setup after successfully booting into your new Arch Linux system.
 
-![First Boot](../../images/first-boot.png)
+![First Boot](../../images/first-boot.gif)
 
 ## 📋 Table of Contents
 
