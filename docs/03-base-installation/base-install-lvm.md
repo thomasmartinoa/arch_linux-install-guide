@@ -240,11 +240,25 @@ Find and uncomment:
 
 ---
 
-## Step 7: Install Kernel
+## Step 7: Install Kernel and Microcode
 
 ```bash
 pacman -S linux linux-headers linux-lts linux-lts-headers linux-firmware
 ```
+
+### Install CPU Microcode (Important!)
+
+**For Intel CPU:**
+```bash
+pacman -S intel-ucode
+```
+
+**For AMD CPU:**
+```bash
+pacman -S amd-ucode
+```
+
+> 💡 Microcode provides CPU stability and security patches. Install the one matching your CPU!
 
 **Package descriptions:**
 | Package | Purpose |
@@ -303,14 +317,14 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
 **Add `lvm2` between `block` and `filesystems`:**
 
 ```
-HOOKS=(base udev autodetect modconf block lvm2 filesystems keyboard fsck)
+HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block lvm2 filesystems fsck)
 ```
 
 **Visual comparison:**
 
 | Before | After |
 |--------|-------|
-| `... block filesystems ...` | `... block lvm2 filesystems ...` |
+| `... block filesystems ...` | `... keyboard keymap consolefont block lvm2 filesystems ...` |
 
 ### Why This Matters
 
@@ -395,6 +409,7 @@ passwd username
 # Install packages (INCLUDE lvm2!)
 pacman -S base-devel dosfstools grub efibootmgr lvm2 mtools vim neovim networkmanager openssh os-prober sudo
 pacman -S linux linux-headers linux-lts linux-lts-headers linux-firmware
+pacman -S intel-ucode  # or amd-ucode for AMD CPUs
 pacman -S mesa intel-media-driver  # or your GPU driver
 
 # Configure sudo
@@ -402,7 +417,7 @@ EDITOR=nvim visudo
 
 # IMPORTANT: Add lvm2 to mkinitcpio HOOKS
 nvim /etc/mkinitcpio.conf
-# Change: HOOKS=(... block lvm2 filesystems ...)
+# Change: HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block lvm2 filesystems fsck)
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 

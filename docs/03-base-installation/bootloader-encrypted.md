@@ -95,7 +95,7 @@ systemctl daemon-reload
 ### Install GRUB to EFI
 
 ```bash
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
 ```
 
 **Expected output:**
@@ -314,7 +314,7 @@ mount /dev/nvme0n1p1 /boot/EFI
 
 # Install GRUB
 systemctl daemon-reload
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
 cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 
 # Configure GRUB for encryption

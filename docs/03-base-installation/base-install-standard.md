@@ -295,11 +295,25 @@ This allows users in the `wheel` group to use sudo.
 
 ---
 
-## Step 7: Install Kernel
+## Step 7: Install Kernel and Microcode
 
 ```bash
 pacman -S linux linux-headers linux-lts linux-lts-headers linux-firmware
 ```
+
+### Install CPU Microcode (Important!)
+
+**For Intel CPU:**
+```bash
+pacman -S intel-ucode
+```
+
+**For AMD CPU:**
+```bash
+pacman -S amd-ucode
+```
+
+> 💡 Microcode provides CPU stability and security patches. Install the one matching your CPU!
 
 **Package descriptions:**
 | Package | Purpose |
@@ -394,6 +408,7 @@ passwd username
 # Install packages
 pacman -S base-devel dosfstools grub efibootmgr mtools vim neovim networkmanager openssh os-prober sudo
 pacman -S linux linux-headers linux-lts linux-lts-headers linux-firmware
+pacman -S intel-ucode  # or amd-ucode for AMD CPUs
 pacman -S mesa intel-media-driver  # or your GPU driver
 
 # Configure sudo

@@ -254,11 +254,25 @@ Find and uncomment:
 
 ---
 
-## Step 7: Install Kernel
+## Step 7: Install Kernel and Microcode
 
 ```bash
 pacman -S linux linux-headers linux-lts linux-lts-headers linux-firmware
 ```
+
+### Install CPU Microcode (Important!)
+
+**For Intel CPU:**
+```bash
+pacman -S intel-ucode
+```
+
+**For AMD CPU:**
+```bash
+pacman -S amd-ucode
+```
+
+> 💡 Microcode provides CPU stability and security patches. Install the one matching your CPU!
 
 **Package descriptions:**
 | Package | Purpose |
@@ -318,19 +332,23 @@ HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
 
 ### Add encrypt and lvm2 Hooks
 
-**Add `encrypt lvm2` between `block` and `filesystems`:**
+**Add `keyboard`, `encrypt`, and `lvm2` in the correct order:**
 
 ```
-HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard fsck)
+HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems fsck)
 ```
+
+> ⚠️ **IMPORTANT:** `keyboard` must come BEFORE `block` so you can type your encryption password!
 
 **Visual comparison:**
 
 | Before | After |
 |--------|-------|
-| `... block filesystems ...` | `... block encrypt lvm2 filesystems ...` |
+| `... autodetect modconf block filesystems keyboard fsck` | `... autodetect modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems fsck` |
 
-> ⚠️ **ORDER MATTERS!** `encrypt` MUST come BEFORE `lvm2`
+> ⚠️ **ORDER MATTERS!** 
+> - `keyboard` MUST come BEFORE `block` (so you can type password)
+> - `encrypt` MUST come BEFORE `lvm2` (decrypt before activating LVM)
 
 ### Why This Order Matters
 
@@ -368,18 +386,21 @@ mkinitcpio -p linux-lts
   -> Running build hook: [udev]
   -> Running build hook: [autodetect]
   -> Running build hook: [modconf]
+  -> Running build hook: [kms]
+  -> Running build hook: [keyboard]      ← Keyboard hook (for password entry)
+  -> Running build hook: [keymap]
+  -> Running build hook: [consolefont]
   -> Running build hook: [block]
   -> Running build hook: [encrypt]       ← Encryption hook runs
   -> Running build hook: [lvm2]          ← LVM hook runs
   -> Running build hook: [filesystems]
-  -> Running build hook: [keyboard]
   -> Running build hook: [fsck]
 ==> Generating module dependencies
 ==> Creating gzip-compressed initcpio image: /boot/initramfs-linux.img
 ==> Image generation successful
 ```
 
-> ✅ **Verify both `[encrypt]` and `[lvm2]` hooks are listed!**
+> ✅ **Verify `[keyboard]` comes before `[block]`, and both `[encrypt]` and `[lvm2]` hooks are listed!**
 
 ---
 
@@ -421,14 +442,15 @@ passwd username
 # Install packages (INCLUDE lvm2!)
 pacman -S base-devel dosfstools grub efibootmgr lvm2 mtools vim neovim networkmanager openssh os-prober sudo
 pacman -S linux linux-headers linux-lts linux-lts-headers linux-firmware
+pacman -S intel-ucode  # or amd-ucode for AMD CPUs
 pacman -S mesa intel-media-driver  # or your GPU driver
 
 # Configure sudo
 EDITOR=nvim visudo
 
-# CRITICAL: Add encrypt lvm2 to mkinitcpio HOOKS
+# CRITICAL: Add keyboard, encrypt, lvm2 to mkinitcpio HOOKS
 nvim /etc/mkinitcpio.conf
-# Change: HOOKS=(... block encrypt lvm2 filesystems ...)
+# Change: HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems fsck)
 mkinitcpio -p linux
 mkinitcpio -p linux-lts
 

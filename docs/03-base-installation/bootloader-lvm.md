@@ -83,7 +83,7 @@ systemctl daemon-reload
 ### Install GRUB to EFI
 
 ```bash
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
 ```
 
 **Command breakdown:**
@@ -91,6 +91,7 @@ grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 |------|---------|
 | `grub-install` | GRUB installation command |
 | `--target=x86_64-efi` | 64-bit UEFI target |
+| `--efi-directory=/boot/EFI` | Path to EFI System Partition |
 | `--bootloader-id=grub_uefi` | Name in UEFI boot menu |
 | `--recheck` | Recheck device map |
 
@@ -237,7 +238,7 @@ mount /dev/sda1 /boot/EFI
 
 # Install GRUB
 systemctl daemon-reload
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
 cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 
 # Configure GRUB
