@@ -191,7 +191,22 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ```
 
-### 5.6 Create Your User
+### 5.6 Console Configuration (Optional)
+
+Configure keyboard layout for the virtual console:
+
+```bash
+nvim /etc/vconsole.conf
+```
+
+Add:
+```
+KEYMAP=us
+```
+
+> 💡 Change `us` to your keyboard layout if needed.
+
+### 5.7 Create Your User
 
 ```bash
 useradd -m -g users -G wheel username
@@ -401,6 +416,7 @@ hwclock --systohc
 nvim /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "KEYMAP=us" > /etc/vconsole.conf  # Optional: set console keymap
 
 # Create user
 useradd -m -g users -G wheel username

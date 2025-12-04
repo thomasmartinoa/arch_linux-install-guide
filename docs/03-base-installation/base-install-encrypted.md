@@ -434,6 +434,7 @@ hwclock --systohc
 nvim /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "KEYMAP=us" > /etc/vconsole.conf  # Set console keymap
 
 # Create user
 useradd -m -g users -G wheel username

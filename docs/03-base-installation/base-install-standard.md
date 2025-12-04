@@ -13,9 +13,10 @@
 - [Step 4: Enter Chroot](#step-4-enter-chroot)
 - [Step 5: System Configuration](#step-5-system-configuration)
 - [Step 6: Install Packages](#step-6-install-packages)
-- [Step 7: Install Kernel](#step-7-install-kernel)
-- [Step 8: GPU Drivers](#step-8-gpu-drivers)
-- [Step 9: Enable Services](#step-9-enable-services)
+- [Step 7: Install Kernel and Microcode](#step-7-install-kernel-and-microcode)
+- [Step 8: Regenerate initramfs](#step-8-regenerate-initramfs)
+- [Step 9: GPU Drivers](#step-9-gpu-drivers)
+- [Step 10: Enable Services](#step-10-enable-services)
 - [Next: Bootloader](#-next-bootloader)
 
 ---
@@ -232,7 +233,22 @@ Set system language:
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ```
 
-### 5.6 Create Your User
+### 5.6 Console Configuration (Optional)
+
+Configure keyboard layout and font for the virtual console (TTY):
+
+```bash
+nvim /etc/vconsole.conf
+```
+
+Add:
+```
+KEYMAP=us
+```
+
+> 💡 This sets the keyboard layout for the console before GUI loads. Change `us` to your layout if needed (e.g., `uk`, `de`, `fr`).
+
+### 5.7 Create Your User
 
 ```bash
 useradd -m -g users -G wheel username
@@ -328,7 +344,30 @@ pacman -S amd-ucode
 
 ---
 
-## Step 8: GPU Drivers
+## Step 8: Regenerate initramfs
+
+After installing the kernel, regenerate the initial ramdisk:
+
+```bash
+mkinitcpio -p linux
+mkinitcpio -p linux-lts
+```
+
+**What this does:**
+- Creates the initial RAM filesystem image
+- Includes necessary modules for booting
+- Must be run after kernel installation
+
+**Expected output:**
+```
+==> Building image from preset: /etc/mkinitcpio.d/linux.preset: 'default'
+...
+==> Image generation successful
+```
+
+---
+
+## Step 9: GPU Drivers
 
 ### Intel GPU
 
@@ -362,7 +401,7 @@ pacman -S mesa libva-mesa-driver nvidia nvidia-lts nvidia-utils
 
 ---
 
-## Step 9: Enable Services
+## Step 10: Enable Services
 
 Enable services to start at boot:
 
@@ -400,6 +439,7 @@ hwclock --systohc
 nvim /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "KEYMAP=us" > /etc/vconsole.conf  # Optional: set console keymap
 
 # Create user
 useradd -m -g users -G wheel username
@@ -413,6 +453,10 @@ pacman -S mesa intel-media-driver  # or your GPU driver
 
 # Configure sudo
 EDITOR=nvim visudo
+
+# Regenerate initramfs
+mkinitcpio -p linux
+mkinitcpio -p linux-lts
 
 # Enable services
 systemctl enable NetworkManager
