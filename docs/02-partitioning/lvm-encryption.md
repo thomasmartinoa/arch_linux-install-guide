@@ -392,15 +392,18 @@ Find the HOOKS line and modify:
 # Original
 HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
 
-# Modified (add encrypt and lvm2)
-HOOKS=(base udev autodetect modconf block encrypt lvm2 filesystems keyboard fsck)
+# Modified (add encrypt and lvm2, move keyboard before block)
+HOOKS=(base udev autodetect modconf kms keyboard keymap consolefont block encrypt lvm2 filesystems fsck)
 ```
 
-**Order matters!** The hooks must be in this order:
-1. `block` - Block device support
-2. `encrypt` - LUKS decryption
-3. `lvm2` - LVM support
-4. `filesystems` - Mount filesystems
+**Order matters!** Critical hooks must be in this order:
+1. `keyboard keymap consolefont` - Keyboard support (needed to type password!)
+2. `block` - Block device support
+3. `encrypt` - LUKS decryption
+4. `lvm2` - LVM support
+5. `filesystems` - Mount filesystems
+
+> ⚠️ **IMPORTANT:** `keyboard` MUST come BEFORE `block` and `encrypt`, otherwise you won't be able to type your encryption password!
 
 Regenerate initramfs:
 

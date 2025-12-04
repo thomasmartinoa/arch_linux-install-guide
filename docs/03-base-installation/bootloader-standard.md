@@ -7,7 +7,7 @@
 ## 📋 Table of Contents
 
 - [Prerequisites](#-prerequisites)
-- [Step 1: Create EFI Directory](#step-1-create-efi-directory)
+- [Step 1: Verify Boot/EFI Partition](#step-1-verify-bootefi-partition)
 - [Step 2: Install GRUB](#step-2-install-grub)
 - [Step 3: Configure GRUB](#step-3-configure-grub)
 - [Step 4: Generate Configuration](#step-4-generate-configuration)
@@ -41,7 +41,7 @@ Power On → UEFI → GRUB → Linux Kernel → System
 
 ---
 
-## Step 1: Create EFI Directory
+## Step 1: Verify Boot/EFI Partition
 
 ### Check if Already Mounted
 
@@ -49,16 +49,17 @@ Power On → UEFI → GRUB → Linux Kernel → System
 ls /boot
 ```
 
-If you see `EFI` folder and `vmlinuz-linux`, boot is already set up. Skip to Step 2.
+If you see `vmlinuz-linux` and other boot files, the boot partition is already mounted.
 
-### Mount EFI Partition (if needed)
+> 📝 **Note:** In Basic/Advanced partitioning, the EFI partition is mounted directly at `/boot`, so it serves as BOTH the boot directory AND the EFI System Partition.
+
+### Mount Boot Partition (if not mounted)
 
 ```bash
-mkdir -p /boot/EFI
-mount /dev/sda1 /boot/EFI
+mount /dev/sda1 /boot
 ```
 
-> 📝 Replace `/dev/sda1` with your EFI partition
+> 📝 Replace `/dev/sda1` with your EFI/boot partition
 
 ---
 
@@ -73,7 +74,7 @@ systemctl daemon-reload
 ### Install GRUB to EFI
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub_uefi --recheck
 ```
 
 **Command breakdown:**
@@ -81,7 +82,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_
 |------|---------|
 | `grub-install` | GRUB installation command |
 | `--target=x86_64-efi` | 64-bit UEFI target |
-| `--efi-directory=/boot/EFI` | Path to EFI System Partition |
+| `--efi-directory=/boot` | Path to EFI System Partition |
 | `--bootloader-id=grub_uefi` | Name in UEFI boot menu |
 | `--recheck` | Recheck device map |
 
@@ -240,13 +241,12 @@ reboot
 ## ✅ Quick Reference Summary
 
 ```bash
-# Create EFI directory (if needed)
-mkdir -p /boot/EFI
-mount /dev/sda1 /boot/EFI
+# Mount boot partition (if needed)
+mount /dev/sda1 /boot
 
 # Install GRUB
 systemctl daemon-reload
-grub-install --target=x86_64-efi --efi-directory=/boot/EFI --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub_uefi --recheck
 cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 
 # Configure GRUB
@@ -267,7 +267,7 @@ reboot
 
 ```bash
 # Reinstall GRUB
-grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub_uefi --recheck
 
 # Check EFI partition
 ls /boot/EFI/grub_uefi/
