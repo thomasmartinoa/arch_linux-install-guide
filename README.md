@@ -11,7 +11,7 @@
 1. [Introduction](#-introduction)
 2. [Prerequisites](#-prerequisites)
 3. [Quick Navigation](#-quick-navigation)
-4. [Installation Paths](#-installation-paths)
+4. [Partitioning Options](#-partitioning-options)
 5. [Contributing](#-contributing)
 
 ---
@@ -71,11 +71,11 @@ Jump directly to [Package Lists](package-lists/) and [Scripts](scripts/)
 
 ---
 
-## 🛤️ Installation Paths
+## 🗄️ Partitioning Options
 
-Choose your installation path based on your needs:
+Choose your partitioning method based on your needs:
 
-| Path | Difficulty | Use Case |
+| Method | Difficulty | Use Case |
 |------|------------|----------|
 | [Basic](docs/02-partitioning/basic-partitioning.md) | ⭐ Easy | Simple setup, dual boot |
 | [Advanced](docs/02-partitioning/advanced-partitioning.md) | ⭐⭐ Medium | Separate /home partition |
