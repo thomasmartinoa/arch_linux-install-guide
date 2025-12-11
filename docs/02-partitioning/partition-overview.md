@@ -278,7 +278,42 @@ mkfs.fat -F32 /dev/sdX1
 
 ---
 
-### Scheme 5: LVM (Flexible)
+### Scheme 5: Btrfs with Subvolumes (Modern) ⭐
+
+```
+┌───────────────────────────────────────────────────────────────┐
+│                          DISK                                 │
+├─────────┬─────────────────────────────────────────────────────┤
+│   EFI   │              BTRFS Partition                        │
+│  512MB  │  ┌───────────────────────────────────────────────┐  │
+│         │  │             Btrfs Subvolumes                  │  │
+│  FAT32  │  │  ┌─────┐ ┌──────┐ ┌──────────┐ ┌───────────┐  │  │
+│         │  │  │  @  │ │@home │ │@snapshots│ │  @var_log │  │  │
+│         │  │  │  /  │ │/home │ │/.snapshots│ │ /var/log  │  │  │
+│         │  │  └─────┘ └──────┘ └──────────┘ └───────────┘  │  │
+│         │  └───────────────────────────────────────────────┘  │
+└─────────┴─────────────────────────────────────────────────────┘
+```
+
+| Partition | Size | Type | Mount |
+|-----------|------|------|-------|
+| EFI | 512MB | FAT32 | /boot |
+| Btrfs | Remaining | btrfs | / (with subvolumes) |
+
+**Subvolumes:**
+- `@` → `/` (root)
+- `@home` → `/home` (user data)
+- `@snapshots` → `/.snapshots` (Snapper snapshots)
+- `@var_log` → `/var/log` (logs, excluded from snapshots)
+
+**Pros:** Built-in snapshots, compression (zstd), CoW filesystem, easy rollback
+**Cons:** Slightly more complex than ext4, swap file needs special handling
+
+> 💡 **Recommended for:** Desktop users who want easy system rollback with Snapper.
+
+---
+
+### Scheme 6: LVM (Flexible)
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -301,7 +336,7 @@ mkfs.fat -F32 /dev/sdX1
 
 ---
 
-### Scheme 6: LVM + Encryption (Most Secure)
+### Scheme 7: LVM + Encryption (Most Secure)
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────┐
@@ -349,7 +384,8 @@ Do you need disk encryption?
 | Use Case | Recommended Scheme | Guide |
 |----------|-------------------|-------|
 | First time Linux | Basic with Swap | [Basic Guide](basic-partitioning.md) |
-| Daily desktop use | Standard | [Advanced Guide](advanced-partitioning.md) |
+| Daily desktop use | Btrfs ⭐ | [Btrfs Guide](btrfs-setup.md) |
+| Want easy system rollback | Btrfs with Snapper | [Btrfs Guide](btrfs-setup.md) |
 | Laptop with sensitive data | LVM + Encryption | [Encryption Guide](lvm-encryption.md) |
 | Server / Multi-disk | LVM | [LVM Guide](lvm-setup.md) |
 | Dual boot with Windows | Basic or Standard | [Basic Guide](basic-partitioning.md) |
@@ -431,11 +467,24 @@ parted /dev/sdX
 
 | Filesystem | Best For | Features |
 |------------|----------|----------|
-| **ext4** | General use ⭐ | Stable, fast, journaling |
-| **btrfs** | Advanced users | Snapshots, compression, subvolumes |
-| **xfs** | Large files | High performance, scalable |
+| **ext4** | Simplicity | Stable, fast, journaling, mature |
+| **btrfs** | Modern desktops ⭐ | Snapshots, compression (zstd), subvolumes, CoW |
+| **xfs** | Large files/servers | High performance, scalable, no shrinking |
 | **FAT32** | EFI partition | Required for UEFI boot |
 | **swap** | Swap partition | Virtual memory |
+
+### Btrfs vs ext4
+
+| Feature | ext4 | Btrfs |
+|---------|------|-------|
+| Stability | ⭐⭐⭐ Very stable | ⭐⭐ Stable (improved) |
+| Snapshots | ❌ No | ✅ Built-in |
+| Compression | ❌ No | ✅ zstd, lzo, zlib |
+| Subvolumes | ❌ No | ✅ Yes |
+| Easy rollback | ❌ No | ✅ With Snapper |
+| Mature | ⭐⭐⭐ Decades | ⭐⭐ ~15 years |
+
+> 💡 **Recommendation:** For new installs, **Btrfs** is recommended for the snapshot capability alone - it can save you from broken updates!
 
 ---
 
@@ -447,6 +496,7 @@ Choose your partitioning guide:
 |-------|-------------|
 | [Basic Partitioning](basic-partitioning.md) | Simple 2-3 partition setup |
 | [Advanced Partitioning](advanced-partitioning.md) | Separate /home partition |
+| [Btrfs Setup](btrfs-setup.md) ⭐ | Modern filesystem with snapshots |
 | [LVM Setup](lvm-setup.md) | Flexible Logical Volume Manager |
 | [LVM + Encryption](lvm-encryption.md) | Full disk encryption |
 
