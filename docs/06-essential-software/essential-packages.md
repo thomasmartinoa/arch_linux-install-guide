@@ -46,7 +46,7 @@ sudo pacman -S tmux          # Terminal multiplexer
 sudo pacman -S btop          # System monitor
 sudo pacman -S neofetch      # System info
 sudo pacman -S bat           # Better cat
-sudo pacman -S exa           # Better ls
+sudo pacman -S eza           # Better ls (modern replacement for exa)
 sudo pacman -S ripgrep       # Better grep
 sudo pacman -S fd            # Better find
 sudo pacman -S fzf           # Fuzzy finder
@@ -232,7 +232,7 @@ sudo pacman -S --needed \
     btop neofetch \
     unzip zip p7zip \
     mpv imv \
-    bat exa ripgrep fd fzf
+    bat eza ripgrep fd fzf
 ```
 
 ### Development Setup

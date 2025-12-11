@@ -148,6 +148,7 @@ sudo pacman -S nvidia-lts
 | `nvidia` | Driver for current kernel |
 | `nvidia-lts` | Driver for LTS kernel |
 | `nvidia-dkms` | DKMS version (compiles for any kernel) |
+| `nvidia-open` | Open-source kernel modules (RTX 2000+ recommended) |
 | `nvidia-utils` | Utilities and libraries |
 | `nvidia-settings` | GUI settings application |
 
@@ -157,6 +158,16 @@ sudo pacman -S nvidia-lts
 # For both linux and linux-lts kernels
 sudo pacman -S nvidia nvidia-lts nvidia-utils nvidia-settings
 ```
+
+### Open Source NVIDIA Driver (nvidia-open)
+
+For newer cards (RTX 2000 series and above), NVIDIA provides open-source kernel modules:
+
+```bash
+sudo pacman -S nvidia-open nvidia-utils nvidia-settings
+```
+
+> 💡 `nvidia-open` is recommended for RTX 2000+ cards and provides better Wayland support.
 
 ### For Any Kernel (DKMS)
 
