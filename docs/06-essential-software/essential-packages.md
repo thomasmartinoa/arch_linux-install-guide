@@ -257,6 +257,6 @@ sudo pacman -S --needed \
 
 <div align="center">
 
-[← Next: AUR Helpers](aur-helpers.md)| [Back to Main Guide](../../README.md) | [Next: Troubleshotting →](docs/08-troubleshooting/README.md)
+[← Next: AUR Helpers](aur-helpers.md)| [Back to Main Guide](../../README.md) | [Next: Troubleshotting →](../08-troubleshooting/README.md)
 
 </div>
