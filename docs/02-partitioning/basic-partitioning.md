@@ -40,13 +40,20 @@ This guide creates a simple partition layout:
 
 ## 🔍 Identify Your Disk
 
+> 💡 **Device Naming Convention:**
+> - **SATA/USB drives:** `/dev/sda`, `/dev/sdb`, etc. Partitions: `/dev/sda1`, `/dev/sda2`
+> - **NVMe drives:** `/dev/nvme0n1`, `/dev/nvme1n1`, etc. Partitions: `/dev/nvme0n1p1`, `/dev/nvme0n1p2`
+> - **SD cards/eMMC:** `/dev/mmcblk0`. Partitions: `/dev/mmcblk0p1`, `/dev/mmcblk0p2`
+>
+> This guide uses `/dev/sda` as an example. **Replace with your actual device!**
+
 ### List All Disks
 
 ```bash
 lsblk
 ```
 
-**Example output:**
+**Example output:
 ```
 NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda           8:0    0 500.0G  0 disk              ← SATA drive

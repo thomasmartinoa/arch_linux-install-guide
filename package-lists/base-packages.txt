@@ -32,6 +32,9 @@ wpa_supplicant
 openssh
 dhcpcd
 
+# Mirror Management
+reflector
+
 # Text Editors
 vim
 neovim
@@ -45,3 +48,5 @@ curl
 htop
 man-db
 man-pages
+bash-completion
+pacman-contrib

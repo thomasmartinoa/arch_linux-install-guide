@@ -291,6 +291,20 @@ vim neovim networkmanager openssh os-prober sudo
 | `os-prober` | Detect other operating systems |
 | `sudo` | Run commands as root |
 
+### Filesystem-Specific Packages
+
+**If using Btrfs:** (Required!)
+```bash
+pacman -S btrfs-progs
+```
+
+**If using LVM:** (Already covered in LVM guide)
+```bash
+pacman -S lvm2
+```
+
+> ⚠️ **Btrfs Users:** You MUST install `btrfs-progs` or your system won't boot!
+
 ### Configure Sudo
 
 ```bash

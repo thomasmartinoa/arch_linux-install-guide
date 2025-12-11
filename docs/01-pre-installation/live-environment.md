@@ -418,6 +418,7 @@ Now you're ready to partition your disk!
 Choose your partitioning method:
 - [Basic Partitioning](../02-partitioning/basic-partitioning.md) - Simple setup
 - [Advanced Partitioning](../02-partitioning/advanced-partitioning.md) - Separate /home
+- [Btrfs Setup](../02-partitioning/btrfs-setup.md) - Modern filesystem with snapshots
 - [LVM Setup](../02-partitioning/lvm-setup.md) - Flexible volumes
 - [LVM with Encryption](../02-partitioning/lvm-encryption.md) - Full disk encryption
 
