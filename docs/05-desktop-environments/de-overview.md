@@ -395,6 +395,6 @@ Choose your desktop environment and follow the specific guide:
 
 <div align="center">
 
-[← Audio & Bluetooth](../04-post-installation/audio-bluetooth.md) | [Back to Main Guide](../../README.md) | [Next: Choose Your DE →](hyprland.md)
+[← Audio & Bluetooth](../04-post-installation/audio-bluetooth.md) | [Back to Main Guide](../../README.md) | [Next: Choose Your DE →](gnome.md)
 
 </div>

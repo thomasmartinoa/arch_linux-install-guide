@@ -76,7 +76,7 @@ Before starting, ensure you have:
 1. [BIOS Settings](docs/01-pre-installation/bios-settings.md)
 2. [Create Bootable USB](docs/01-pre-installation/create-bootable-usb.md)
 3. [Live Environment Setup](docs/01-pre-installation/live-environment.md)
-4. [Btrfs Setup](docs/02-partitioning/btrfs-setup.md) ⭐ *Snapshots & compression*
+4. [Btrfs Setup](docs/02-partitioning/btrfs-setup.md)
 5. [Standard Base Installation](docs/03-base-installation/base-install-standard.md)
 6. [systemd-boot Bootloader](docs/03-base-installation/bootloader-systemd.md)
 7. [First Boot](docs/04-post-installation/first-boot.md)
