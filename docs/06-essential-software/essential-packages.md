@@ -257,6 +257,6 @@ sudo pacman -S --needed \
 
 <div align="center">
 
-[← Desktop Environments](../05-desktop-environments/de-overview.md) | [Back to Main Guide](../../README.md) | [Next: AUR Helpers →](aur-helpers.md)
+[Next: AUR Helpers →](aur-helpers.md)| [Back to Main Guide](../../README.md) | [Next: Troubleshotting →](docs\08-troubleshooting\README.md)
 
 </div>
