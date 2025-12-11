@@ -141,6 +141,20 @@ options root=PARTUUID=xxxx-xxxx rw
 
 > 📝 Replace `intel-ucode.img` with `amd-ucode.img` for AMD CPUs.
 
+### For Btrfs with Subvolumes
+
+If you used the Btrfs partitioning guide with subvolumes, add `rootflags`:
+
+```ini
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux.img
+options root=PARTUUID=xxxx-xxxx rw rootflags=subvol=@
+```
+
+> ⚠️ **Btrfs Users:** The `rootflags=subvol=@` is REQUIRED if you created subvolumes!
+
 ### Get Your PARTUUID
 
 ```bash

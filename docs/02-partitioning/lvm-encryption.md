@@ -425,16 +425,16 @@ nvim /etc/default/grub
 Add encrypted device to kernel parameters:
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=/dev/nvme0n1p3:volgroup0"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=/dev/nvme0n1p3:lvm"
 ```
 
 **Parameter breakdown:**
 
 | Part | Meaning |
-|------|---------|
+|------|--------|
 | `cryptdevice=` | Specify encrypted device |
 | `/dev/nvme0n1p3` | LUKS partition |
-| `:volgroup0` | Name after decryption (matches VG name) |
+| `:lvm` | Name after decryption (must match `cryptsetup open ... lvm`) |
 
 Regenerate GRUB config:
 

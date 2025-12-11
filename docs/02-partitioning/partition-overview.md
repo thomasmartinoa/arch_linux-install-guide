@@ -6,12 +6,47 @@
 
 ## 📋 Table of Contents
 
+- [Device Naming](#-device-naming)
 - [What is Partitioning?](#-what-is-partitioning)
 - [Partition Tables: GPT vs MBR](#-partition-tables-gpt-vs-mbr)
 - [Partition Types](#-partition-types)
 - [Partition Schemes](#-partition-schemes)
 - [Choosing Your Setup](#-choosing-your-setup)
 - [Tools Overview](#-tools-overview)
+
+---
+
+## 💻 Device Naming
+
+> ⚠️ **Important:** Device names vary by disk type. Know your disk before partitioning!
+
+### Device Naming Conventions
+
+| Disk Type | Device | Partitions | Example |
+|-----------|--------|------------|---------|
+| **SATA/USB** | `/dev/sda`, `/dev/sdb` | `/dev/sda1`, `/dev/sda2` | HDD, SSD, USB drives |
+| **NVMe** | `/dev/nvme0n1`, `/dev/nvme1n1` | `/dev/nvme0n1p1`, `/dev/nvme0n1p2` | NVMe SSDs |
+| **SD/eMMC** | `/dev/mmcblk0` | `/dev/mmcblk0p1`, `/dev/mmcblk0p2` | SD cards, eMMC |
+| **Virtual** | `/dev/vda` | `/dev/vda1`, `/dev/vda2` | VMs (KVM/QEMU) |
+
+### Find Your Disk
+
+```bash
+lsblk
+```
+
+**Example output:**
+```
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda           8:0    0 500.0G  0 disk          ← SATA disk
+nvme0n1     259:0    0   1.0T  0 disk          ← NVMe disk
+└─nvme0n1p1 259:1    0   512M  0 part
+sdb           8:16   1   8.0G  0 disk          ← USB drive
+```
+
+> 📝 **Note:** This guide uses `/dev/sda` as an example. **Replace with YOUR device!**
+> - If you have NVMe: use `/dev/nvme0n1` and partitions `/dev/nvme0n1p1`, `/dev/nvme0n1p2`, etc.
+> - If you have SATA: use `/dev/sda` and partitions `/dev/sda1`, `/dev/sda2`, etc.
 
 ---
 
@@ -468,7 +503,7 @@ parted /dev/sdX
 | Filesystem | Best For | Features |
 |------------|----------|----------|
 | **ext4** | Simplicity | Stable, fast, journaling, mature |
-| **btrfs** | Modern desktops ⭐ | Snapshots, compression (zstd), subvolumes, CoW |
+| **btrfs** | Modern desktops | Snapshots, compression (zstd), subvolumes, CoW |
 | **xfs** | Large files/servers | High performance, scalable, no shrinking |
 | **FAT32** | EFI partition | Required for UEFI boot |
 | **swap** | Swap partition | Virtual memory |
@@ -496,7 +531,7 @@ Choose your partitioning guide:
 |-------|-------------|
 | [Basic Partitioning](basic-partitioning.md) | Simple 2-3 partition setup |
 | [Advanced Partitioning](advanced-partitioning.md) | Separate /home partition |
-| [Btrfs Setup](btrfs-setup.md) ⭐ | Modern filesystem with snapshots |
+| [Btrfs Setup](btrfs-setup.md) | Modern filesystem with snapshots |
 | [LVM Setup](lvm-setup.md) | Flexible Logical Volume Manager |
 | [LVM + Encryption](lvm-encryption.md) | Full disk encryption |
 

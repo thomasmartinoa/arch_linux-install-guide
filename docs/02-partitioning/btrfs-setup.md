@@ -20,6 +20,8 @@
 
 Btrfs (B-tree File System) is a modern copy-on-write filesystem with powerful features.
 
+> ⚠️ **Required Package:** You MUST install `btrfs-progs` during base installation for Btrfs to work!
+
 ### Features
 
 | Feature | Description |
@@ -240,6 +242,16 @@ swapon /mnt/swap/swapfile
 
 ## 📸 Snapshot Setup
 
+### Install Required Packages (In Chroot)
+
+> 🔴 **CRITICAL:** Install `btrfs-progs` during base installation, NOT after reboot!
+
+During base installation (while in chroot):
+
+```bash
+pacman -S btrfs-progs
+```
+
 ### Install Snapper (After Base Install)
 
 After installing the base system and rebooting:
@@ -406,7 +418,11 @@ After partitioning, continue to:
 
 → [Standard Base Installation](../03-base-installation/base-install-standard.md)
 
-> 📝 **Note:** The base installation is the same as standard, just with Btrfs-specific fstab entries.
+> 📝 **Important for Btrfs users:**
+> - Install `btrfs-progs` during base installation (covered in the guide)
+> - Choose your bootloader:
+>   - [GRUB](../03-base-installation/bootloader-standard.md) - Works with all setups
+>   - [systemd-boot](../03-base-installation/bootloader-systemd.md) - Simpler, requires `rootflags=subvol=@`
 
 ---
 
